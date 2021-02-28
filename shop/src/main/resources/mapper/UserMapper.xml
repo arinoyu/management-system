@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arino.mapper.UserMapper">
+    <select id="getUserByName" parameterType="String" resultMap="UserMap">
+        select *
+        from user
+                 join role on user.rid = role.id
+        where username = #{name};
+    </select>
+
+    <resultMap id="UserMap" type="User">
+        <result column="create_time" property="createTime" javaType="Date" jdbcType="TIMESTAMP"/>
+        <result column="role_name" property="roleName"/>
+        <result column="mg_state" property="mgState"/>
+    </resultMap>
+
+    <select id="getUsersLimit" resultMap="UserMap">
+        select *
+        from user
+                 join role on user.rid = role.id
+        where username like "%"#{query}"%" limit #{start}
+            , #{end}
+    </select>
+
+    <select id="totalNumber" resultType="Integer">
+        select count(*)
+        from user
+        where username like "%"#{query}"%"
+    </select>
+
+    <update id="updateUserById">
+        update user
+        set mg_state = #{state}
+        where id = #{id}
+    </update>
+
+    <select id="getUserById" resultMap="UserMap">
+        select *
+        from user
+        where id = #{id};
+    </select>
+
+    <insert id="addUser">
+        insert into user (rid, username, password, email, mobile)
+        values (#{rid}, #{username}, #{password}, #{email}, #{mobile});
+    </insert>
+
+    <update id="editUser">
+        update user
+        set email  = #{email},
+            mobile = #{mobile}
+        where id = #{id}
+    </update>
+
+    <update id="allotUserRole">
+        update user
+        set rid=#{rid}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUser">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <update id="updateUserRole">
+        update user
+        set rid=1
+        where rid = #{rid}
+    </update>
+
+</mapper>
