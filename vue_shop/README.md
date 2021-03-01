@@ -1,24 +1,14 @@
-# vue_shop
+### 说明
 
-## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
 
-### Compiles and minifies for production
+这里是前端项目的根目录，在命令行依次输入如下命令以运行项目:
+
 ```
-yarn build
+# 安装依赖
+npm install
+
+# 在 localhost:8080 启动项目
+npm run serve
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

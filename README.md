@@ -51,11 +51,11 @@
 
 1. clone 项目到本地 `git@github.com:arinoyu/management-system.git`
 2. 在本地mysql新创建一个数据库，导入system.sql，同时在application.yml更改连接数据库的信息。
-3. 运行启动类ShopApplication.java
+3. 用IDEA导入后端项目shop，运行启动类ShopApplication.java
 
 **至此，后端项目已部署完毕，你可以尝试在地址栏输入`http://localhost:8888`，若返回一串json数据，则说明后端部署成功**
 
-4. 进入到vuehr目录中，在命令行依次输入如下命令：
+4. 进入到前端项目vue_shop目录中，在命令行依次输入如下命令：
 
 ```
 # 安装依赖
